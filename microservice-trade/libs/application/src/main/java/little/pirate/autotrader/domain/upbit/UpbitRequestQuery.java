@@ -12,10 +12,9 @@ public class UpbitRequestQuery {
     private final HttpMethod method;
     private final String body;
     private final String param;
-    private final boolean authRequired;
 
     @Builder
-    public UpbitRequestQuery(String url, HttpMethod method, String body, String param, boolean authRequired) {
+    public UpbitRequestQuery(String url, HttpMethod method, String body, String param) {
         assertThat(url).isNotBlank();
         assertThat(method).isNotNull();
 
@@ -23,6 +22,5 @@ public class UpbitRequestQuery {
         this.method = method;
         this.body = body;
         this.param = param;
-        this.authRequired = authRequired;
     }
 }

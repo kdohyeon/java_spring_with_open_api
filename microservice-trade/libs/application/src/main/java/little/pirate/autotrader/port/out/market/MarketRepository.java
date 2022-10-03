@@ -5,5 +5,5 @@ import little.pirate.autotrader.domain.market.Market;
 import java.util.List;
 
 public interface MarketRepository {
-    List<Market> getAllMarkets();
+    List<Market> getAllMarkets(MarketClause clause);
 }

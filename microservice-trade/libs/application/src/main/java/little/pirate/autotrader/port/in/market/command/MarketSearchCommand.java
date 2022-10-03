@@ -5,9 +5,11 @@ import lombok.Getter;
 
 @Getter
 public class MarketSearchCommand {
+    private final boolean isDetails;
     private final Pair pair;
 
-    public MarketSearchCommand(String pair) {
+    public MarketSearchCommand(boolean isDetails, String pair) {
+        this.isDetails = isDetails;
         this.pair = Pair.valueOf(pair);
     }
 }

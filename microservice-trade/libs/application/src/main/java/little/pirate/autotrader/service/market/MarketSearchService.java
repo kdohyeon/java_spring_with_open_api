@@ -5,6 +5,7 @@ import little.pirate.autotrader.converter.market.MarketDtoConverter;
 import little.pirate.autotrader.port.in.market.SearchMarketUseCase;
 import little.pirate.autotrader.port.in.market.command.MarketSearchCommand;
 import little.pirate.autotrader.port.in.market.dto.MarketDto;
+import little.pirate.autotrader.port.out.market.MarketClause;
 import little.pirate.autotrader.port.out.market.MarketRepository;
 import org.springframework.stereotype.Service;
 
@@ -24,13 +25,15 @@ public class MarketSearchService implements SearchMarketUseCase {
 
     @Override
     public List<MarketDto> getAllMarkets() {
-        var result = marketRepository.getAllMarkets();
+        var clause = new MarketClause(false);
+        var result = marketRepository.getAllMarkets(clause);
         return marketDtoConverter.convert(result);
     }
 
     @Override
     public List<MarketDto> searchMarketsBy(MarketSearchCommand command) {
-        var result = marketRepository.getAllMarkets();
+        var clause = new MarketClause(command.isDetails());
+        var result = marketRepository.getAllMarkets(clause);
         var filtered = result.stream()
                 .filter(each -> command.getPair() == Pair.getPair(each.getMarket()))
                 .toList();
