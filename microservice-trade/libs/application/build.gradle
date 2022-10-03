@@ -5,3 +5,10 @@ bootJar {
 jar {
     enabled = true
 }
+
+dependencies {
+    implementation(project(":microservice-trade:protocol"))
+    implementation("org.hibernate.validator:hibernate-validator:8.0.0.Final")
+
+    runtimeOnly(project(":microservice-trade:libs:adapter-http"))
+}

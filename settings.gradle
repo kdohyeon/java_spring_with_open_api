@@ -3,5 +3,6 @@ include(
         "microservice-trade:apps:app-api",
         "microservice-trade:apps:app-batch",
         "microservice-trade:libs:application",
+        'microservice-trade:libs:adapter-http',
         "microservice-trade:protocol",
 )

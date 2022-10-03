@@ -5,3 +5,10 @@ bootJar {
 jar {
     enabled = true
 }
+
+subprojects {
+    dependencies {
+        implementation("org.mapstruct:mapstruct:1.5.2.Final")
+        annotationProcessor("org.mapstruct:mapstruct-processor:1.5.2.Final")
+    }
+}

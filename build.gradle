@@ -42,5 +42,7 @@ subprojects {
         compileOnly 'org.projectlombok:lombok'
         annotationProcessor 'org.projectlombok:lombok'
         implementation 'org.springframework.boot:spring-boot-starter-test'
+
+        implementation 'com.google.code.gson:gson:2.9.0'
     }
 }
