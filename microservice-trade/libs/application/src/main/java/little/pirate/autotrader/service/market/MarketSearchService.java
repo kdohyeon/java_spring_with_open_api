@@ -6,7 +6,7 @@ import little.pirate.autotrader.port.in.market.SearchMarketUseCase;
 import little.pirate.autotrader.port.in.market.command.MarketSearchCommand;
 import little.pirate.autotrader.port.in.market.dto.MarketDto;
 import little.pirate.autotrader.port.out.market.MarketClause;
-import little.pirate.autotrader.port.out.market.MarketRepository;
+import little.pirate.autotrader.port.out.market.MarketPort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,28 +14,28 @@ import java.util.List;
 @Service
 public class MarketSearchService implements SearchMarketUseCase {
 
-    private final MarketRepository marketRepository;
+    private final MarketPort marketPort;
     private final MarketDtoConverter marketDtoConverter;
 
-    public MarketSearchService(MarketRepository marketRepository,
+    public MarketSearchService(MarketPort marketPort,
                                MarketDtoConverter marketDtoConverter) {
-        this.marketRepository = marketRepository;
+        this.marketPort = marketPort;
         this.marketDtoConverter = marketDtoConverter;
     }
 
     @Override
     public List<MarketDto> getAllMarkets() {
         var clause = new MarketClause(false);
-        var result = marketRepository.getAllMarkets(clause);
+        var result = marketPort.getAllMarkets(clause);
         return marketDtoConverter.convert(result);
     }
 
     @Override
     public List<MarketDto> searchMarketsBy(MarketSearchCommand command) {
         var clause = new MarketClause(command.isDetails());
-        var result = marketRepository.getAllMarkets(clause);
+        var result = marketPort.getAllMarkets(clause);
         var filtered = result.stream()
-                .filter(each -> command.getPair() == Pair.getPair(each.getMarket()))
+                .filter(each -> command.getPair() == Pair.getPair(each.getMarketSymbol()))
                 .toList();
         return marketDtoConverter.convert(filtered);
     }

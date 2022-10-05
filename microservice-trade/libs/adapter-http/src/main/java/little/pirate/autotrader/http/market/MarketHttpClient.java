@@ -7,14 +7,14 @@ import little.pirate.autotrader.domain.market.Market;
 import little.pirate.autotrader.domain.upbit.UpbitRequestQuery;
 import little.pirate.autotrader.http.upbit.UpbitHttpClient;
 import little.pirate.autotrader.port.out.market.MarketClause;
-import little.pirate.autotrader.port.out.market.MarketRepository;
+import little.pirate.autotrader.port.out.market.MarketPort;
 import little.pirate.autotrader.protocol.deserializer.JsonDeserializer;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
-public class MarketHttpClient implements MarketRepository {
+public class MarketHttpClient implements MarketPort {
 
     private final UpbitHttpClient upbitHttpClient;
     private final JsonDeserializer jsonDeserializer;

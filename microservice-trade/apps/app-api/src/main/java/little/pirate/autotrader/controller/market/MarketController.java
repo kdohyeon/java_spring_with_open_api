@@ -1,5 +1,6 @@
 package little.pirate.autotrader.controller.market;
 
+import little.pirate.autotrader.port.in.market.CreateMarketUseCase;
 import little.pirate.autotrader.port.in.market.SearchMarketUseCase;
 import little.pirate.autotrader.port.in.market.command.MarketSearchCommand;
 import little.pirate.autotrader.port.in.market.dto.MarketDto;
@@ -14,9 +15,12 @@ import java.util.List;
 public class MarketController {
 
     private final SearchMarketUseCase searchMarketUseCase;
+    private final CreateMarketUseCase createMarketUseCase;
 
-    public MarketController(SearchMarketUseCase searchMarketUseCase) {
+    public MarketController(SearchMarketUseCase searchMarketUseCase,
+                            CreateMarketUseCase createMarketUseCase) {
         this.searchMarketUseCase = searchMarketUseCase;
+        this.createMarketUseCase = createMarketUseCase;
     }
 
     @GetMapping(value = "/v1/market/all")
@@ -33,5 +37,11 @@ public class MarketController {
         var command = new MarketSearchCommand(isDetails, pair);
         var result = searchMarketUseCase.searchMarketsBy(command);
         return ResultResponse.success(result);
+    }
+
+    @GetMapping(value = "/v1/market/create")
+    public ResultResponse<Void> save() {
+        createMarketUseCase.create();
+        return ResultResponse.success();
     }
 }

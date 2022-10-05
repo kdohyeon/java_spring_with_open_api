@@ -3,4 +3,7 @@ dependencies {
     implementation(project(":microservice-trade:libs:application"))
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    runtimeOnly(project(":microservice-trade:libs:adapter-persistence"))
+    runtimeOnly(project(":microservice-trade:libs:adapter-http"))
 }
