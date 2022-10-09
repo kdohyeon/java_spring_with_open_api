@@ -6,12 +6,6 @@ jar {
     enabled = true
 }
 
-buildscript {
-    ext {
-        queryDslVersion = "5.0.0"
-    }
-}
-
 dependencies {
     implementation(project(":microservice-trade:libs:application"))
 
@@ -22,9 +16,10 @@ dependencies {
     implementation("io.jsonwebtoken:jjwt-jackson:0.11.5")
     implementation("com.auth0:java-jwt:4.0.0")
 
-    implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
+    implementation "com.querydsl:querydsl-jpa:5.0.0"
+    implementation "com.querydsl:querydsl-apt:5.0.0"
     annotationProcessor(
             "javax.persistence:javax.persistence-api",
             "javax.annotation:javax.annotation-api",
-            "com.querydsl:querydsl-apt:${queryDslVersion}:jpa")
+            "com.querydsl:querydsl-apt:5.0.0:jpa")
 }
