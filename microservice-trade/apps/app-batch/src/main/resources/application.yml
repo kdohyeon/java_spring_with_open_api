@@ -5,3 +5,6 @@ spring:
     import:
       - 'classpath:adapter-http.yml'
       - 'classpath:adapter-persistence.yml'
+  batch:
+    job:
+      names: ${job.name:NONE}
