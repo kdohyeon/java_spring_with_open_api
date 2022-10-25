@@ -12,5 +12,3 @@ include(
         'microservice-trade:libs:adapter-persistence',
         "microservice-trade:protocol",
 )
-include 'app-api'
-include 'application'
