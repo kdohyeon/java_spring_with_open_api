@@ -30,10 +30,16 @@ subprojects {
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
 
-    sourceCompatibility = 8
+    sourceCompatibility = 1.8
 
     repositories {
         mavenCentral()
+    }
+
+    configurations {
+        compileOnly {
+            extendsFrom annotationProcessor
+        }
     }
 
     dependencies {
@@ -43,5 +49,18 @@ subprojects {
         annotationProcessor 'org.projectlombok:lombok'
 
         compileOnly 'org.projectlombok:lombok'
+    }
+}
+
+project(':microservice-trade:apps:app-api') {
+    // app-api 모듈에서 필요한 라이브러리가 발생하면 여기에 추가
+    dependencies {
+        implementation project(':microservice-trade:protocol')
+        implementation project(':microservice-trade:libs:application')
+
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+
+        runtimeOnly(project(":microservice-trade:libs:adapter-persistence"))
+        runtimeOnly(project(":microservice-trade:libs:adapter-http"))
     }
 }
