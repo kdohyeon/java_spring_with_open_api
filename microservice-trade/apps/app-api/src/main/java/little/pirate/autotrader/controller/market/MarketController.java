@@ -25,7 +25,7 @@ public class MarketController {
 
     @GetMapping(value = "/v1/market/all")
     public ResultResponse<List<MarketDto>> getMarkets() {
-        var result = searchMarketUseCase.getAllMarkets();
+        List<MarketDto> result = searchMarketUseCase.getAllMarkets();
         return ResultResponse.success(result);
     }
 
@@ -34,8 +34,8 @@ public class MarketController {
             @RequestParam(defaultValue = "false") boolean isDetails,
             @RequestParam String pair
     ) {
-        var command = new MarketSearchCommand(isDetails, pair);
-        var result = searchMarketUseCase.searchMarketsBy(command);
+        MarketSearchCommand command = new MarketSearchCommand(isDetails, pair);
+        List<MarketDto> result = searchMarketUseCase.searchMarketsBy(command);
         return ResultResponse.success(result);
     }
 

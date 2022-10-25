@@ -15,14 +15,14 @@ import org.springframework.transaction.support.TransactionTemplate;
 public class PersistenceJpaConfiguration {
     @Bean
     public TransactionTemplate writeTransactionOperations(PlatformTransactionManager transactionManager) {
-        var transactionTemplate = new TransactionTemplate(transactionManager);
+        TransactionTemplate transactionTemplate = new TransactionTemplate(transactionManager);
         transactionTemplate.setReadOnly(false);
         return transactionTemplate;
     }
 
     @Bean
     public TransactionTemplate readTransactionOperations(PlatformTransactionManager transactionManager) {
-        var transactionTemplate = new TransactionTemplate(transactionManager);
+        TransactionTemplate transactionTemplate = new TransactionTemplate(transactionManager);
         transactionTemplate.setReadOnly(true);
         return transactionTemplate;
     }

@@ -19,7 +19,7 @@ public abstract class BaseTimeEntity {
 
     @PrePersist
     protected void onCreate() {
-        var now = ZonedDateTime.now();
+        ZonedDateTime now = ZonedDateTime.now();
         this.createdAt = now;
         this.modifiedAt = now;
     }

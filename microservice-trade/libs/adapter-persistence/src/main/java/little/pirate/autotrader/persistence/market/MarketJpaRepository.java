@@ -28,7 +28,7 @@ public class MarketJpaRepository extends QuerydslRepositorySupport implements Ma
 
     @Override
     public void save(Market market) {
-        var entityManager = getEntityManager();
+        EntityManager entityManager = getEntityManager();
         Assert.notNull(entityManager, "Entity manager must not null.");
         entityManager.persist(market);
         entityManager.flush();

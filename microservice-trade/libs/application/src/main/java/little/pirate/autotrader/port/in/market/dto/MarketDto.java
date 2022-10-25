@@ -4,7 +4,7 @@ import lombok.Getter;
 
 @Getter
 public class MarketDto {
-    private final String marketSymbol;
+    private final String marketSymbol; // BTC-KRW
     private final String koreanName;
     private final String englishName;
     private final String marketWarning;
