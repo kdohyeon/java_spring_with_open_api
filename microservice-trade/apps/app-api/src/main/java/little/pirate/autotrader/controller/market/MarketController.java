@@ -25,8 +25,12 @@ public class MarketController {
 
     @GetMapping(value = "/v1/market/all")
     public ResultResponse<List<MarketDto>> getMarkets() {
-        List<MarketDto> result = searchMarketUseCase.getAllMarkets();
-        return ResultResponse.success(result);
+        try {
+            List<MarketDto> result = searchMarketUseCase.getAllMarkets();
+            return ResultResponse.success(result);
+        } catch (Exception e) {
+            return ResultResponse.fail(e.getMessage());
+        }
     }
 
     @GetMapping(value = "/v1/market")
