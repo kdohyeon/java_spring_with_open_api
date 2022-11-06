@@ -28,6 +28,7 @@ public class MarketCreateService implements CreateMarketUseCase {
 
     @Override
     public void create() {
+
         writeTransactionOperations.executeWithoutResult(status -> marketPortV2.save(Market.builder()
                         .englishName("Bitcoin")
                         .koreanName("비트코인")

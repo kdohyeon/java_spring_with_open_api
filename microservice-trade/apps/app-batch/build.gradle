@@ -1,11 +1,10 @@
 dependencies {
     implementation(project(":microservice-trade:libs:application"))
     implementation(project(":microservice-trade:libs:adapter-persistence"))
+
     implementation("org.springframework.boot:spring-boot-starter-batch")
     implementation("org.springframework.boot:spring-boot-starter-web")
-
     runtimeOnly(project(":microservice-trade:libs:adapter-http"))
-
     implementation("org.springframework.boot:spring-boot-starter-test")
     implementation("org.springframework.batch:spring-batch-test")
 }
